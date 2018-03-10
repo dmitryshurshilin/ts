@@ -1,4 +1,5 @@
 import Base from './base';
+import Resident from './resident';
 import {
     Coordinates,
     Person,
@@ -7,6 +8,10 @@ import {
 export class City extends Base {
     coordinates: Coordinates;
     residents: Array<Person> = [];
+
+    constructor() {
+        super();
+    }
 
     setCoordinates(coordinates: Coordinates): void {
         this.coordinates = coordinates;
@@ -17,7 +22,8 @@ export class City extends Base {
     }
 
     addResident(resident: Person): void {
-        this.residents.push(resident);
+        const residentObj = new Resident(resident);
+        this.residents.push(residentObj.get());
     }
 
     getResidentsList(): Array<Person> {
